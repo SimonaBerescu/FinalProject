@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class AddressPage extends BasePage {
+    @FindBy(xpath = "/html/body/section/div[1]/header/div[2]/input")
+    WebElement acceptCookies;
+
     @FindBy(xpath = "//*[@id=\"addresses\"]/div/div[1]/a")
     WebElement adaugaAdresaNouaButton;
 
@@ -21,11 +24,16 @@ public class AddressPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"addresses\"]/div/div[2]/form/div[4]/div/div/button")
     WebElement saveButton;
 
-    @FindBy(xpath = "//*[@id=\"addressid-34319\"]/div[1]")
+    @FindBy(xpath = "//*[@id=\"addresses\"]/div")
     WebElement adresa1;
+
+    String addressText = "Strada Horea 80, ap. 1";
 
     public AddressPage(WebDriver driver) {
         super(driver);
+    }
+    public void clickAcceptCookies(){
+        acceptCookies.click();
     }
 
     public void adaugaAdresaNoua(){
@@ -46,7 +54,12 @@ public class AddressPage extends BasePage {
     public void clickSaveButton(){
         saveButton.click();
     }
-    public boolean address1IsDisplayed(){
+    public boolean adresa1IsDisplayed(){
         return adresa1.isDisplayed();
     }
+
+    public boolean addressTextIsDisplayed(){
+        return adresa1.getText().contains(addressText);
+    }
+
 }

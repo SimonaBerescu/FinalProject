@@ -4,6 +4,7 @@ import com.edituraDPH.pages.AddressPage;
 import com.edituraDPH.pages.LoginPage;
 import com.edituraDPH.pages.MyAccountPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,11 +17,10 @@ import static com.edituraDPH.pages.LoginPage.LOGIN_URL;
 
 public class AddAddressTest extends BaseTest{
     @Test
-    public void positiveLogin() {
+    public void addAddress() {
         driver = new ChromeDriver();
         driver.get(LOGIN_URL);
         LoginPage loginPage = new LoginPage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         loginPage.enterCorrectUsername();
         loginPage.enterCorrectPassword();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -28,6 +28,7 @@ public class AddAddressTest extends BaseTest{
         loginPage.clickLoginButton();
 
         MyAccountPage myAccountPage = new MyAccountPage(driver);
+        //
         //driver.switchTo().frame("form-newsletter-popup");
        // myAccountPage.setAddEmail();
        // myAccountPage.setAddName();
@@ -35,16 +36,19 @@ public class AddAddressTest extends BaseTest{
       //  myAccountPage.clickCheckboxTerms();
        // myAccountPage.abonareNewsletter();
        // myAccountPage.clickCloseNewsletterPopup();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
         myAccountPage.clickAdrese();
+
         AddressPage addressPage = new AddressPage(driver);
+        addressPage.clickAcceptCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         addressPage.adaugaAdresaNoua();
         addressPage.selectCounty();
         addressPage.selectCity();
         addressPage.addAdaugaAdresa();
         addressPage.clickSaveButton();
-        Assert.assertTrue(addressPage.address1IsDisplayed());
+        Assert.assertTrue(addressPage.adresa1IsDisplayed());
+        Assert.assertTrue(addressPage.addressTextIsDisplayed());
 
 
 

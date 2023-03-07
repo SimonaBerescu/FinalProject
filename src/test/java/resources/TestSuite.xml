@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="EdituraDPHTests">
+
+    <test name="LoginTests" >
+        <classes>
+            <class name="com.edituraDPH.tests.LoginTests" />
+        </classes>
+    </test>
+
+    <test name="AddAddressTest" >
+        <classes>
+            <class name="com.edituraDPH.tests.AddAddressTest" />
+        </classes>
+    </test>
+
+    <test name="AddToFavoritesTest" >
+        <classes>
+            <class name="com.edituraDPH.tests.AddToFavoritesTest" />
+        </classes>
+    </test>
+
+    <test name="AddBooksToCartTest" >
+        <classes>
+            <class name="com.edituraDPH.tests.AddBooksToCartTest" />
+        </classes>
+    </test>
+
+</suite>

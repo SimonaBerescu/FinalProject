@@ -10,13 +10,10 @@ public class BaseTest {
     @BeforeMethod
     protected void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        //driver.manage().window().maximize();
-
     }
 
     @AfterMethod
     protected void tearDown() {
-        //driver.manage().deleteAllCookies();
        driver.close();
     }
 }
