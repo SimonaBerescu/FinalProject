@@ -12,8 +12,16 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
     }
 
+    public static void waitForAGivenNumberOfMs(int milliseconds){
+        try {
+            driver.wait(milliseconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @AfterMethod
     protected void tearDown() {
-       driver.close();
+        driver.close();
     }
 }

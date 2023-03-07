@@ -6,6 +6,8 @@ import com.edituraDPH.pages.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -21,22 +23,17 @@ public class AddAddressTest extends BaseTest{
         driver = new ChromeDriver();
         driver.get(LOGIN_URL);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterCorrectUsername();
-        loginPage.enterCorrectPassword();
+        WebElement iframe = driver.findElement(By.xpath("//*[@id=\"login\"]/form/h2"));
+        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(iframe);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 200)
+                .perform();;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        // loginPage.loginButton = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#login > form > div.form-actions > div > button")));
+        loginPage.enterCorrectPassword();
+        loginPage.enterCorrectUsername();
         loginPage.clickLoginButton();
 
         MyAccountPage myAccountPage = new MyAccountPage(driver);
-        //
-        //driver.switchTo().frame("form-newsletter-popup");
-       // myAccountPage.setAddEmail();
-       // myAccountPage.setAddName();
-       // myAccountPage.clickCheckboxNewsletter();
-      //  myAccountPage.clickCheckboxTerms();
-       // myAccountPage.abonareNewsletter();
-       // myAccountPage.clickCloseNewsletterPopup();
-
         myAccountPage.clickAdrese();
 
         AddressPage addressPage = new AddressPage(driver);

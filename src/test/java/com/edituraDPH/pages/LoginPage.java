@@ -5,13 +5,16 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.ws.Action;
 import java.time.Duration;
 
-public class LoginPage  extends BasePage{
+public class LoginPage<element> extends BasePage{
     public final static String LOGIN_URL = BASE_URL+"?page=checkout";
 
     @FindBy(xpath = "/html/body/section/div[1]/header/div[2]/input")
